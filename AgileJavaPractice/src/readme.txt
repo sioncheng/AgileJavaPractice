@@ -1,0 +1,1 @@
+this project uses JUnit4
