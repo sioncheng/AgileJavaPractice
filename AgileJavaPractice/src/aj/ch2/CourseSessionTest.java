@@ -6,21 +6,18 @@ import org.junit.Test;
 import org.junit.Before;
 
 import aj.ch1.Student;
+import aj.util.DateUtil;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class CourseSessionTest{
 
 	private CourseSession session;
-	private GregorianCalendar startDateCalendar;
 	private Date startDate;
 	
 	@Before
 	public void setUp(){
-		startDateCalendar = new GregorianCalendar(2012,1,1);
-		startDate = startDateCalendar.getTime();
+		startDate = DateUtil.createDate(2000, 1, 1);
 		session = new CourseSession("ENG","100",startDate);
 	}
 	
@@ -44,8 +41,7 @@ public class CourseSessionTest{
 		assertEquals(student1,session.getStudent(0));
 		assertEquals(student2,session.getStudent(1));
 		
-		startDateCalendar.add(Calendar.DAY_OF_YEAR, 17 * 6 - 3);
-		Date endDate = startDateCalendar.getTime();
+		Date endDate = DateUtil.addDays(startDate, 17 * 6 - 3);
 		assertEquals(endDate,session.getEndDate());
 	}
 }
