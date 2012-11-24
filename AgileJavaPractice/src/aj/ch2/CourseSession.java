@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Collections;
 
 public class CourseSession {
 
@@ -56,5 +57,11 @@ public class CourseSession {
 		calendar.add(Calendar.DAY_OF_YEAR, days);
 		
 		return calendar.getTime();
+	}
+	
+	public ArrayList<Student> getStudents(){		
+		ArrayList<Student> al = new ArrayList<Student>(this.getNumberOfStudents());
+		al.addAll(this.students);
+		return al;
 	}
 }
