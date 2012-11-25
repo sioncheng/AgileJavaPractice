@@ -12,7 +12,10 @@ public class Student {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name){
+		if(name.contains(" ")) {
+			throw new StudentNameFormatException(StudentNameFormatException.Reason.HasBlankSpace);
+		}
 		this.name = name;
 	}
 	
