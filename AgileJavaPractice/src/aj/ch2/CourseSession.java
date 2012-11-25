@@ -5,8 +5,9 @@ import aj.util.DateUtil;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.lang.Comparable;
 
-public class CourseSession {
+public class CourseSession implements Comparable<CourseSession>{
 
 	private String department;
 	private String number;
@@ -56,5 +57,9 @@ public class CourseSession {
 		ArrayList<Student> al = new ArrayList<Student>(this.getNumberOfStudents());
 		al.addAll(this.students);
 		return al;
+	}
+	
+	public int compareTo(CourseSession o){
+		return this.getNumber().compareTo(o.getNumber());		
 	}
 }

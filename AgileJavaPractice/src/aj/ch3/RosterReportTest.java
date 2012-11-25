@@ -12,7 +12,7 @@ import java.lang.StringBuffer;
 public class RosterReportTest {
 
 	@Test
-	public void test() {
+	public void testGetReport() {
 		CourseSession session = new CourseSession("ENG","100");
 		session.enroll(new Student("Jon"));
 		session.enroll(new Student("Joy"));
@@ -31,6 +31,24 @@ public class RosterReportTest {
 		assertEquals(sb.toString(),RosterReport.getReport(session));
 		
 		System.out.print(sb.toString());
+	}
+	
+	@Test
+	public void testText(){
+		RosterReport report = new RosterReport();
+		report.add(new CourseSession("ENG","100"));
+		report.add(new CourseSession("MTH","90"));
+		report.add(new CourseSession("PHY","102"));
+		
+		StringBuffer sb = new StringBuffer();
+		sb.append("department ENG number 100");
+		sb.append(RosterReport.NEW_LINE);
+		sb.append("department PHY number 102");
+		sb.append(RosterReport.NEW_LINE);
+		sb.append("department MTH number 90");
+		sb.append(RosterReport.NEW_LINE);
+		
+		assertEquals(sb.toString(),report.text());
 	}
 
 }
