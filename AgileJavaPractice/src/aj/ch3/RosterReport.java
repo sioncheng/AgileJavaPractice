@@ -6,17 +6,24 @@ import aj.ch2.CourseSession;
 import java.lang.StringBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 
 public class RosterReport {
 
-	public static final String HEADER = "";
-	public static final String FOOTER = "";
-	public static final String NEW_LINE = System.getProperty("line.seperator");
+	public static final String HEADER = "==== header =====";
+	public static final String FOOTER = "==== footer =====";
+	public static final String NEW_LINE = System.getProperty("line.separator");
 	
 	private ArrayList<CourseSession> sessions ;
 	
 	public RosterReport(){
 		this.sessions = new ArrayList<CourseSession>();
+	}
+	
+	public RosterReport(CourseSession session){
+		this();
+		this.add(session);
 	}
 	
 	public void add(CourseSession session){
@@ -57,5 +64,12 @@ public class RosterReport {
 		return sb.toString();
 	}
 	
+	public void writeReport(String filename) throws Exception{
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+		String text = getReport(this.sessions.get(0));
+		writer.write(text,0,text.length());
+		writer.close();
+	}
 	
 }
