@@ -31,7 +31,7 @@ public class SearchTest {
 	@Test
 	public void testExcute() throws IOException{
 		search.execute();
-		assertEquals(1,search.getOccurrences());
+		assertEquals(1,search.getMatches());
 	}
 	
 

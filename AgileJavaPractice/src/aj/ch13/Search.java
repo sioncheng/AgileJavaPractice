@@ -13,7 +13,7 @@ public class Search {
 	
 	private String url;
 	private String text;
-	private int occurrences;
+	private int matches;
 	
 	public String getUrl(){
 		return this.url;
@@ -23,14 +23,14 @@ public class Search {
 		return this.text;
 	}
 	
-	public int getOccurrences(){
-		return this.occurrences;
+	public int getMatches(){
+		return this.matches;
 	}
 
 	public Search(String url,String text){
 		this.url = url ;
 		this.text = text;
-		this.occurrences = 0;
+		this.matches = 0;
 	}
 	
 	public void execute() throws IOException{
@@ -48,7 +48,7 @@ public class Search {
 			
 			String line = null ;
 			while( (line = bufferedReader.readLine()) != null ){
-				this.occurrences += StringUtil.occurrences(line, this.text);
+				this.matches += StringUtil.occurrences(line, this.text);
 			}
 			
 			
